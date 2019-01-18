@@ -1,0 +1,21 @@
+<nav class="navbar-header">
+  <button mat-icon-button>
+    <mat-icon (click)="changeSideNavMode()">menu</mat-icon>
+  </button>
+  <h1>{{title}}</h1>
+  <div class="flex-spacer"></div>
+  <button mat-icon-button [matMenuTriggerFor]="paramMenu">
+    <mat-icon>settings</mat-icon>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="profilMenu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+</nav>
+<mat-menu #paramMenu="matMenu">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+<mat-menu #profilMenu="matMenu">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
