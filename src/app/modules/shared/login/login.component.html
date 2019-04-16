@@ -1,26 +1,54 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>Login</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <form class="example-form">
-      <table class="example-full-width" cellspacing="0">
-        <tr>
-          <td>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
-          </mat-form-field></td>
-        </tr></table>
+<section class="material-half-bg">
+  <div class="cover"></div>
+</section>
+<section class="login-content">
+  <div class="logo">
+    <h1 translate>APPLICATION_TITTLE</h1>
+  </div>
+  <div class="login-box">
+    <form class="login-form" *ngIf="isConnexionView" (ngSubmit)="login()" [formGroup]="connexionForm">
+      <h3 class="login-head">
+        <div>
+          <mat-icon>person</mat-icon>
+          <div translate>CONNEXION</div>
+        </div>
+      </h3>
+      <mat-form-field>
+        <mat-label><span translate>USERNAME</span></mat-label>
+        <input matInput formControlName="username" placeholder="USERNAME">
+        <mat-error><span translate>USERNAME_REQUIRED</span></mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label><span translate>PASSWORD</span></mat-label>
+        <input matInput formControlName="password" placeholder="PASSWORD">
+        <mat-error><span translate>PASSWORD_REQUIRED</span></mat-error>
+      </mat-form-field>
+      <mat-checkbox><span translate>STAY_SIGNED_IN</span></mat-checkbox>
+      <button type="submit" class="button-login" mat-raised-button color="primary">
+        <mat-icon>input</mat-icon>
+        <span translate>SIGN_IN</span>
+      </button>
+      <button mat-button (click)="isConnexionView = !isConnexionView"><span translate>FORGOT_PASSWORD</span></button>
     </form>
-    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="login()" color="primary">Login</button>
-  </mat-card-actions>
-</mat-card>
+    <form class="forget-form" [formGroup]="resetForm" *ngIf="!isConnexionView">
+      <h3 class="login-head">
+        <div>
+          <mat-icon>lock</mat-icon>
+          <div><span translate>FORGOT_PASSWORD</span></div>
+        </div>
+      </h3>
+      <mat-form-field>
+        <mat-label><span translate>EMAIL</span></mat-label>
+        <input matInput formControlName="email" placeholder="EMAIL">
+        <mat-error><span translate>EMAIL_REQUIRED</span></mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary">
+        <mat-icon>lock_open</mat-icon>
+        <span translate>RESET</span></button>
+      <button class="button-login" mat-button (click)="isConnexionView = !isConnexionView">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+        <span translate>CONNEXION</span>
+      </button>
+    </form>
+  </div>
+</section>

@@ -1,26 +1,35 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  username: string;
-  password: string;
+export class LoginComponent {
+  public isConnexionView: boolean;
+  public connexionForm: FormGroup;
+  public resetForm: FormGroup;
 
   constructor(private router: Router) {
-  }
-
-  ngOnInit() {
+    this.isConnexionView = true;
+    this.connexionForm = new FormGroup({
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
+    });
+    this.resetForm = new FormGroup({
+      email: new FormControl('', Validators.required)
+    });
   }
 
   login(): void {
-    if (this.username === 'admin' && this.password === 'admin') {
-      this.router.navigate(['user']);
-    } else {
-      alert('Invalid credentials');
+    if (this.connexionForm.valid) {
+      if (this.connexionForm.controls['username'].value === 'admin' && this.connexionForm.controls['password'].value === 'admin') {
+        this.router.navigate(['/']);
+      } else {
+        alert('Invalid credentials');
+      }
     }
   }
 }

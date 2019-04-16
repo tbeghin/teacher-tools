@@ -15,15 +15,18 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatToolbarModule,
+  MatTooltipModule,
   MatExpansionModule,
   MatPaginatorIntl,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 @NgModule({
   imports: [
     MatTabsModule,
     MatCardModule,
+    MatCheckboxModule,
     MatListModule,
     MatIconModule,
     MatDialogModule,
@@ -37,12 +40,14 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatToolbarModule,
+    MatTooltipModule,
     MatExpansionModule,
     MatProgressSpinnerModule
   ],
   exports: [
     MatTabsModule,
     MatCardModule,
+    MatCheckboxModule,
     MatListModule,
     MatIconModule,
     MatDialogModule,
@@ -56,6 +61,7 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatToolbarModule,
+    MatTooltipModule,
     MatExpansionModule,
     MatProgressSpinnerModule
   ]

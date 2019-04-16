@@ -1,0 +1,17 @@
+{
+  "APPLICATION_TITTLE": "Outils profs",
+  "CONNEXION": "Connexion",
+  "USERNAME": "Utilisateur",
+  "PASSWORD": "Mot de passe",
+  "USERNAME_REQUIRED": "L'utilisateur est requis",
+  "PASSWORD_REQUIRED": "Le mot de passe est requis",
+  "STAY_SIGNED_IN": "Rester connecté",
+  "FORGOT_PASSWORD": "Mot de passe oublié",
+  "SIGN_IN": "Se connecter",
+  "EMAIL": "Email",
+  "EMAIL_REQUIRED": "L'email est requis",
+  "RESET": "Réinitialiser",
+  "LANGUAGE": "Langue",
+  "SETTINGS": "Paramètres",
+  "PROFILE": "Profils"
+}

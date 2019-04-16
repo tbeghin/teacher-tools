@@ -5,7 +5,7 @@ import {LayoutComponent} from './layout.component';
 const routes: Routes = [
   {
     path: '', component: LayoutComponent, children: [
-      {path: 'home', loadChildren: './modules/home/home.module#HomeModule'},
+      {path: 'home', loadChildren: '../../home/home.module#HomeModule'},
       {path: '', redirectTo: 'home', pathMatch: 'full'}
     ]
   }

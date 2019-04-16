@@ -2,20 +2,27 @@
   <button mat-icon-button>
     <mat-icon (click)="changeSideNavMode()">menu</mat-icon>
   </button>
-  <h1>{{title}}</h1>
+  <h1 translate>APPLICATION_TITTLE</h1>
   <div class="flex-spacer"></div>
-  <button mat-icon-button [matMenuTriggerFor]="paramMenu">
+  <button mat-icon-button matTooltip="{{languageLabel | translate}}" [matMenuTriggerFor]="languageMenu">
+    <mat-icon>language</mat-icon>
+  </button>
+  <button mat-icon-button matTooltip="{{settingsLabel | translate}}" [matMenuTriggerFor]="paramMenu">
     <mat-icon>settings</mat-icon>
   </button>
-  <button mat-icon-button [matMenuTriggerFor]="profilMenu">
+  <button mat-icon-button matTooltip="{{profileLabel | translate}}" [matMenuTriggerFor]="profileMenu">
     <mat-icon>account_circle</mat-icon>
   </button>
 </nav>
+<mat-menu #languageMenu="matMenu">
+  <button mat-menu-item>fr</button>
+  <button mat-menu-item>en</button>
+</mat-menu>
 <mat-menu #paramMenu="matMenu">
   <button mat-menu-item>Item 1</button>
   <button mat-menu-item>Item 2</button>
 </mat-menu>
-<mat-menu #profilMenu="matMenu">
-  <button mat-menu-item>Item 1</button>
+<mat-menu #profileMenu="matMenu">
+  <button mat-menu-item routerLink="/login">Connexion</button>
   <button mat-menu-item>Item 2</button>
 </mat-menu>
