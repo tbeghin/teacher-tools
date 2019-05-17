@@ -2,8 +2,8 @@ steps:
 - name: 'gcr.io/cloud-builders/npm'
   args: ['install']
 - name: 'gcr.io/cloud-builders/npm'
-  args: ['run', 'build']
+  args: ['run', 'build', '--prod']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'eu.gcr.io/engaged-range-240707/shared-component-api', '.']
+  args: ['build', '-t', 'eu.gcr.io/engaged-range-240707/teacher-tools-front', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'eu.gcr.io/engaged-range-240707/shared-component-api']
+  args: ['push', 'eu.gcr.io/engaged-range-240707/teacher-tools-front']
