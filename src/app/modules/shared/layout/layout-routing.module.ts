@@ -6,6 +6,7 @@ const routes: Routes = [
   {
     path: '', component: LayoutComponent, children: [
       {path: 'home', loadChildren: '../../home/home.module#HomeModule'},
+      {path: 'admin', loadChildren: '../../admin/admin.module#AdminModule'},
       {path: '', redirectTo: 'home', pathMatch: 'full'}
     ]
   }

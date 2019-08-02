@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>ADD_OR_UPDATE_USER</h1>
+<div mat-dialog-content>
+  <form [formGroup]="userFormGroup">
+    <mat-form-field>
+      <mat-label><span translate>EMAIL</span></mat-label>
+      <input matInput [formControl]="emailForm" placeholder="EMAIL">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">CANCEL</button>
+  <button mat-button (click)="validate()">VALID</button>
+</div>

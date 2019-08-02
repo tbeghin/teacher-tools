@@ -1,19 +1,21 @@
-<nav class="navbar-header">
+<mat-toolbar color="primary">
   <button mat-icon-button>
     <mat-icon (click)="changeSideNavMode()">menu</mat-icon>
   </button>
-  <h1 translate>APPLICATION_TITTLE</h1>
+  <h1 translate routerLink="/home" class="click">APPLICATION_TITTLE</h1>
   <div class="flex-spacer"></div>
-  <button mat-icon-button matTooltip="{{languageLabel | translate}}" [matMenuTriggerFor]="languageMenu">
+  <span>{{headerLabel.welcome | translate}} {{(currentUser$ | async).firstName}}</span>
+  <div class="flex-spacer"></div>
+  <button mat-icon-button matTooltip="{{headerLabel.language | translate}}" [matMenuTriggerFor]="languageMenu">
     <mat-icon>language</mat-icon>
   </button>
-  <button mat-icon-button matTooltip="{{settingsLabel | translate}}" [matMenuTriggerFor]="paramMenu">
+  <button mat-icon-button matTooltip="{{headerLabel.settings | translate}}" [matMenuTriggerFor]="paramMenu">
     <mat-icon>settings</mat-icon>
   </button>
-  <button mat-icon-button matTooltip="{{profileLabel | translate}}" [matMenuTriggerFor]="profileMenu">
+  <button mat-icon-button matTooltip="{{headerLabel.profile | translate}}" [matMenuTriggerFor]="profileMenu">
     <mat-icon>account_circle</mat-icon>
   </button>
-</nav>
+</mat-toolbar>
 <mat-menu #languageMenu="matMenu">
   <button mat-menu-item>fr</button>
   <button mat-menu-item>en</button>

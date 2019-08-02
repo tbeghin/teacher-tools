@@ -15,12 +15,12 @@
       </h3>
       <mat-form-field>
         <mat-label><span translate>USERNAME</span></mat-label>
-        <input matInput formControlName="username" placeholder="USERNAME">
+        <input matInput [formControl]="usernameControl" placeholder="USERNAME">
         <mat-error><span translate>USERNAME_REQUIRED</span></mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label><span translate>PASSWORD</span></mat-label>
-        <input matInput formControlName="password" placeholder="PASSWORD">
+        <input matInput [formControl]="passwordControl" placeholder="PASSWORD">
         <mat-error><span translate>PASSWORD_REQUIRED</span></mat-error>
       </mat-form-field>
       <mat-checkbox><span translate>STAY_SIGNED_IN</span></mat-checkbox>
@@ -42,9 +42,10 @@
         <input matInput formControlName="email" placeholder="EMAIL">
         <mat-error><span translate>EMAIL_REQUIRED</span></mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary">
+      <button type="submit" mat-raised-button color="primary">
         <mat-icon>lock_open</mat-icon>
-        <span translate>RESET</span></button>
+        <span translate>RESET</span>
+      </button>
       <button class="button-login" mat-button (click)="isConnexionView = !isConnexionView">
         <mat-icon>keyboard_arrow_left</mat-icon>
         <span translate>CONNEXION</span>

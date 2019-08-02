@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {AppLinks} from '../../models/appLinks';
+import {APP_MENU} from '../../models/constants/app-menu';
 
 @Component({
   selector: 'app-navbar',
@@ -6,14 +8,12 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  public links: Array<string>;
+  public links: Array<AppLinks>;
 
   constructor() {
-    this.links = [];
+    this.links = APP_MENU;
   }
 
   ngOnInit() {
-    this.links = ['toto', 'titi', 'tutu', 'tata'];
   }
-
 }

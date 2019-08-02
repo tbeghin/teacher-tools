@@ -15,18 +15,29 @@ import {MainNavbarModule} from './modules/shared/main-navbar/main-navbar.module'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './modules/shared/material/material.module';
 import {ErrorPageComponent} from './modules/shared/error-page/error-page.component';
-import {JwtInterceptor} from './interceptors/jwt.interceptor';
 import {ErrorInterceptor} from './interceptors/error.interceptor';
 import {JwtModule} from '@auth0/angular-jwt';
-import {SharedString} from './models/constants/sharedString';
+import {environment} from '../environments/environment';
+import {SocketIoConfig, SocketIoModule} from 'ngx-socket-io';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HubService} from './services/hub.service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
 export function tokenGetter() {
-  return localStorage.getItem(SharedString.tokenStorageName);
+  return localStorage.getItem(environment.tokenStorageName);
 }
+
+const config: SocketIoConfig = {
+  url: 'http://localhost:8080',
+  options: {
+    query: {
+      'x-auth-token': tokenGetter()
+    }
+  }
+};
 
 registerLocaleData(localeFr, 'fr');
 registerLocaleData(localeEn, 'en');
@@ -40,10 +51,12 @@ registerLocaleData(localeEn, 'en');
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     HttpClientModule,
     MaterialModule,
     MainHeaderModule,
     MainNavbarModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -58,12 +71,14 @@ registerLocaleData(localeEn, 'en');
         blacklistedRoutes: ['localhost:7071/api/authenticate'],
         skipWhenExpired: true
       }
-    })
+    }),
+    SocketIoModule.forRoot(config)
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    HubService,
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: LOCALE_ID, useValue: 'fr'}
-    ],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
